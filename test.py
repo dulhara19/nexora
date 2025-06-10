@@ -7,11 +7,11 @@ def structuredAgent(user_input):
     prompt = f"""
     You are a university chatbot assistant that converts natural language questions into MySQL queries.
 
-Your job is to:
-- Read the user input.
-- Analyze whether it's related to timetables, bus schedules, or café menus.
-- Convert it into a valid MySQL SELECT query.
-- Handle natural language date expressions like "today", "tomorrow", or weekdays.
+    Your job is to:
+    - Read the user input.
+    - Analyze whether it's related to timetables, bus schedules, or café menus.
+    - Convert it into a valid MySQL SELECT query.
+    - Handle natural language date expressions like "today", "tomorrow", or weekdays.
 - Wrap your SQL output **only** inside <final_answer> tags. Do not add any explanations or comments.
 
 Database tables:
@@ -20,10 +20,20 @@ Database tables:
 2. `bus_schedules(route_name, departure_location, arrival_location, departure_time, arrival_time, date, day_of_week)`
 3. `cafe_menus(item_name, item_type, price, date, day_of_week)`
 
-Date Mapping Rules:
-- "today" → `CURDATE()`
-- "tomorrow" → `CURDATE() + INTERVAL 1 DAY`
-- Weekdays like "Monday", "Tuesday" → `day_of_week = 'Monday'` etc.
+Instructions:
+- departure_location is 'University Main Gate' if user says "main gate" or "campus" or even if user didnt mention it.
+- departure_location is 'Sports Complex' if user says "campus sport center" or "rec" or "recreational center".
+- arrival_locations are (Panadura,Kaduwela,Gampaha,Kadawatha,Moratuwa,Horana,Kaluthara,Athurugiriya,Pettah,Nugegoda)
+- 
+
+
+Mapping Rules:
+- "today" → `CURRENT_DATE()`
+- "tomorrow" → `CURRENT_DATE() + INTERVAL 1 DAY`
+-  Weekdays like "Monday", "Tuesday" → `day_of_week = 'Monday'` etc.
+-  "main gate" → `departure_location = 'University Main Gate'`
+-  "campus" → `departure_location = 'University Main Gate'`
+- 
 
 Output format:
 ```<final_answer>[SQL_QUERY]</final_answer>```
@@ -33,8 +43,21 @@ Examples:
 User: "What’s on the cafe menu today?"  
 → <final_answer>SELECT item_name, item_type, price FROM cafe_menus WHERE date = CURDATE();</final_answer>
 
-User: "When does the bus leave from campus to town tomorrow?"  
+
+
+
+
+
+User: "When is the bus to Kadawatha arriving at the main gate?"
+→ <final_answer>SELECT route_name, departure_time, arrival_time FROM bus_schedules WHERE departure_location ='University Main Gate' AND date = CURRENT_DATE() AND arrival_location='Kadawatha' ;
+</final_answer>
+
+User: "When does the bus leave from campus to Athurugiriya tomorrow?"  
 → <final_answer>SELECT route_name, departure_time, arrival_time FROM bus_schedules WHERE departure_location LIKE '%campus%' AND arrival_location LIKE '%town%' AND date = CURDATE() + INTERVAL 1 DAY;</final_answer>
+
+
+
+
 
 User: "What time is the software engineering lecture on Wednesday?"  
 → <final_answer>SELECT course_name, start_time, end_time, location FROM timetables WHERE course_name LIKE '%software engineering%' AND day_of_week = 'Wednesday';</final_answer>
@@ -65,4 +88,4 @@ Now generate the SQL query for the following user input:
        results = cursor.fetchall()
        print("\n📊 Query Results:"+ results)
 
-structuredAgent("When is the bus arriving at the main gate?")
+structuredAgent("When is the bus to kadawatha arriving at the main gate?")
