@@ -3,10 +3,9 @@ import json
 import re
 import os
 from dotenv import load_dotenv
-from meditron import calling_meditron 
-from llmagent import calling_llmagent
-from neragent import calling_neragent
-from app import MedicalKG
+from structuredAgent import structuredAgent
+from llmconnector import connector
+
 
 # Load env vars from .env file
 load_dotenv()
@@ -33,10 +32,16 @@ Examples:
 - "What time is the math lecture on Monday?" → <final_answer>structured</final_answer>
 - "When is the bus arriving at the main gate?" → <final_answer>structured</final_answer>
 - "What is today's cafe menu?" → <final_answer>structured</final_answer>
+- "What are the exam dates for this semester?" → <final_answer>structured</final_answer>
+
 - "How do I apply for medical leave if I missed an exam?" → <final_answer>unstructured</final_answer>
 - "Who do I contact for scholarship information?" → <final_answer>unstructured</final_answer>
 - "What are the rules for exam conduct?" → <final_answer>unstructured</final_answer>
 - "Can I take a leave of absence for personal reasons?" → <final_answer>unstructured</final_answer>
+- "What is the process for requesting disability accommodations?" → <final_answer>unstructured</final_answer>
+- "What is the grading policy for this course?" → <final_answer>unstructured</final_answer>
+- "What is the procedure for requesting a transcript?" → <final_answer>unstructured</final_answer>
+- "What are the requirements for graduation?" → <final_answer>unstructured</final_answer>
 
 - "When is the next chemistry exam and how do I request a medical leave?" → <final_answer>hybrid</final_answer>
 - "I missed my exam last week because of illness. When is the makeup exam scheduled?" → <final_answer>hybrid</final_answer>
@@ -50,15 +55,7 @@ Now classify this input:
 """
 
 # Step 3: Send request to LLM
-url = 'http://localhost:11434/api/generate'
-headers = {'Content-Type': 'application/json'}
-data = {
-    'model': 'deepseek-r1:8b',
-    'prompt': prompt,
-    'stream': False,  # Not using streaming
-}
-
-response = requests.post(url, headers=headers, data=json.dumps(data))
+response = connector(prompt)
 
 # Step 4: Parse and extract classification
 result = response.json()
@@ -73,35 +70,21 @@ match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DO
 
 
 
-# # --------- AGENT FUNCTIONS --------- 
-# def info_question_agent(user_input):
-#     print("\n🤖 [INFO AGENT]: Answering factual medical question...")
+# --------- AGENT FUNCTIONS --------- 
+def call_structured_agent(user_input):
+    print("\n🤖 [structured AGENT]: Answering factual medical question...")
+    structuredAgent(user_input)  # Call the structured agent function
     
-#     answer = calling_meditron(user_input)
-#     print(f"🔍 Processing info question: '{user_input}'")
-#         # Here you would call your Meditron model or any other LLM to get the answer
-#         # For now, we just simulate a response
-#     print(answer)
     
 
-# def symptom_story_agent(user_input):
-#     print("\n🧬 [SYMPTOM AGENT]: Understanding symptoms and reasoning...")
-#     answer=calling_llmagent(user_input)
-#     entities=calling_neragent(answer)
-#     # ✅ Create instance of MedicalKG before calling the method
-#     kg = MedicalKG(uri="bolt://localhost:7687", user="neo4j", password=PASSWORD)
+def call_unstructured_agent(user_input):
+    print("\n🧬 [SYMPTOM AGENT]: Understanding symptoms and reasoning...")
     
-#     dis = kg.get_diseases_by_symptoms(entities)
-#     print(f"🩺 Diagnosing from: '{user_input}'")
-#     print(f"💡 Extracted entities: {entities}")
-#     print(f"🔬 possible diseas: {dis}")
 
-
-# def hybrid_agent(user_input):
-#     print("\n🔀 [HYBRID AGENT]: Handling both symptom story and question...")
-#     # You can call both agents or do smarter hybrid logic
-#     info_question_agent(user_input)
-#     symptom_story_agent(user_input)
+def call_hybrid_agent(user_input):
+    print("\n🔀 [HYBRID AGENT]: Handling both symptom story and question...")
+    # You can call both agents or do smarter hybrid logic
+  
 
 
 
@@ -112,16 +95,16 @@ if match:
     print("\n✅ Final Answer Extracted:")
     print(final_answer)
 
-# # --------- ROUTING TO AGENTS ---------
-#     if final_answer == "info_question":
-#         info_question_agent(user_input)
-#     elif final_answer == "symptom_story":
-#         symptom_story_agent(user_input)
-#     elif final_answer == "hybrid":
-#         hybrid_agent(user_input)
-#     else:
-#         print("⚠️ Unknown classification.")
-# else:
-#     print("\n❌ No <final_answer> tag found in the response.")
+# --------- ROUTING TO AGENTS ---------
+    if final_answer == "structured":
+        call_structured_agent(user_input)
+    elif final_answer == "unstructured":
+        call_unstructured_agent(user_input)
+    elif final_answer == "hybrid":
+        call_hybrid_agent(user_input)
+    else:
+        print("⚠️ Unknown classification.")
+else:
+    print("\n❌ No <final_answer> tag found in the response.")
 
 
