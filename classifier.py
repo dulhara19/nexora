@@ -72,9 +72,9 @@ match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DO
 
 # --------- AGENT FUNCTIONS --------- 
 def call_structured_agent(user_input):
-    print("\n🤖 [structured AGENT]: Answering factual medical question...")
-    structuredAgent(user_input)  # Call the structured agent function
-    
+    print("\n🤖 [structured AGENT]: Answering structured question...")
+    res=structuredAgent(user_input)  # Call the structured agent function
+    print("\n✅ Structured Agent Response:\n", res)
     
 
 def call_unstructured_agent(user_input):
