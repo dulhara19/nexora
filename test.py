@@ -57,8 +57,12 @@ Now generate the SQL query for the following user input:
     match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
 
     if match:
-       final_answer = match.group(1).strip()
-       print("\n✅ Final Answer Extracted:")
-       print(final_answer)
+       query = match.group(1).strip()
+       print("\n✅ qery generated:")
+       print(query)
+       conn=get_connection()
+       cursor=conn.cursor()
+       results = cursor.fetchall()
+       print("\n📊 Query Results:"+ results)
 
 structuredAgent("When is the bus arriving at the main gate?")
