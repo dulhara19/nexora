@@ -1,0 +1,100 @@
+Module: Data Structures and Algorithms (DSA)
+Module code: cs102
+
+Department: Computer Science / Software Engineering
+Module Code: CS301 (Example)
+Key Details:
+
+    Duration: 12 weeks (1 semester)
+
+    Credits: 3 (or equivalent)
+
+    Format:
+
+        30% Assignments & Projects
+
+        20% Midterm Exam
+
+        50% Final Exam
+
+    Enrollment: Via university portal (e.g., Student Hub) during registration period.
+
+Instructors:
+
+    Dr. Rasika (Lead Instructor)
+
+        Email: Rasika.r@nsbm.ac.lk
+
+        Phone: +94 71 255 5694
+
+    Prof. Naji (Co-Instructor)
+
+        Email: naji@nsbm.ac.lk
+
+        Phone: +94 71 255 5694
+
+Course Content:
+
+    Core Topics:
+
+        Arrays, Linked Lists, Stacks, Queues
+
+        Trees (Binary, AVL, B-Trees) & Graphs
+
+        Sorting & Searching Algorithms
+
+        Dynamic Programming, Greedy Algorithms
+
+        Complexity Analysis (Big-O)
+
+    Tools/Languages: Python, Java, C++ (varies by program)
+
+Importance Across Disciplines:
+
+    Software Engineering: Foundation for coding interviews, system design, and optimization.
+
+    Data Science: Critical for efficient data processing (e.g., hash tables for big data).
+
+    Computer Science: Theoretical backbone for advanced CS topics (AI, cryptography).
+
+Learning Outcomes:
+
+By the end of this module, students will:
+
+    Design/implement efficient data structures.
+
+    Analyze time/space complexity of algorithms.
+
+    Solve real-world problems (e.g., pathfinding, caching).
+
+    Prepare for technical interviews (LeetCode-style questions).
+
+Industry Expectations vs. Career Impact:
+
+    Industry Demands: DSA is a must-have skill for top tech firms (FAANG, startups).
+
+    Career Growth: Mastery leads to roles in backend development, AI/ML engineering, and competitive coding.
+
+Procedures & Contacts:
+
+    Relevant Departments:
+
+        Computer Science Office
+
+            Contact: cs-office@nsbm.ac.lk | +1 (555) 222-3333
+
+        Academic Advisor:
+
+            Name: Sarah Lee ferowky
+
+            Email: sarah.lee@nsbm.ac.lk
+
+    Prerequisites: Intro to Programming (CS101) or equivalent.
+
+Additional Notes:
+
+    PS: Late enrollment requires approval from the department head.
+
+    PPS: Free tutoring is available—check the department bulletin board!
+
+#algorithms, #career-growth    

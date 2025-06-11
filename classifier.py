@@ -5,6 +5,7 @@ import os
 from dotenv import load_dotenv
 from structuredAgent import structuredAgent
 from llmconnector import connector
+from unstructuredAgent import search_documents
 
 
 # Load env vars from .env file
@@ -42,6 +43,7 @@ Examples:
 - "What is the grading policy for this course?" → <final_answer>unstructured</final_answer>
 - "What is the procedure for requesting a transcript?" → <final_answer>unstructured</final_answer>
 - "What are the requirements for graduation?" → <final_answer>unstructured</final_answer>
+- "What topics are covered in the DSA module?" → <final_answer>unstructured</final_answer>
 
 - "When is the next chemistry exam and how do I request a medical leave?" → <final_answer>hybrid</final_answer>
 - "I missed my exam last week because of illness. When is the makeup exam scheduled?" → <final_answer>hybrid</final_answer>
@@ -62,7 +64,7 @@ result = response.json()
 raw_output = result.get("response", "")
 
 # Print raw output for debugging
-print("\n📦 Raw LLM Output:\n", raw_output)
+# print("\n📦 Raw LLM Output:\n", raw_output)
 
 # Step 5: Extract <final_answer>
 match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
@@ -78,8 +80,9 @@ def call_structured_agent(user_input):
     
 
 def call_unstructured_agent(user_input):
-    print("\n🧬 [SYMPTOM AGENT]: Understanding symptoms and reasoning...")
-    
+    print("\n [unstructured AGENT]: Understanding symptoms and reasoning...")
+    response= search_documents(user_input)  # Call the unstructured agent function
+    print("\n✅ Unstructured Agent Response:\n", response)
 
 def call_hybrid_agent(user_input):
     print("\n🔀 [HYBRID AGENT]: Handling both symptom story and question...")
