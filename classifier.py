@@ -6,19 +6,13 @@ from dotenv import load_dotenv
 from structuredAgent import structuredAgent
 from llmconnector import connector
 from unstructuredAgent import search_documents
-
-
-# Load env vars from .env file
-load_dotenv()
-
-# Read the variables
-URI = os.getenv("NEO4J_URI")
-USER = os.getenv("NEO4J_USER")
-PASSWORD = os.getenv("NEO4J_PASSWORD")
+from tts import text_to_speech
+from stt import speech_to_text
 
 
 # Step 1: User input
-user_input = input(" Enter your medical question or story: ")
+# input=speech_to_text()
+user_input = input("enter your question: ")
 
 # Step 2: Formulate the prompt with richer examples
 prompt = f"""
@@ -34,6 +28,7 @@ Examples:
 - "When is the bus arriving at the main gate?" → <final_answer>structured</final_answer>
 - "What is today's cafe menu?" → <final_answer>structured</final_answer>
 - "What are the exam dates for this semester?" → <final_answer>structured</final_answer>
+- "what are the bus schedules for tooday" → <final_answer>structured</final_answer>
 
 - "How do I apply for medical leave if I missed an exam?" → <final_answer>unstructured</final_answer>
 - "Who do I contact for scholarship information?" → <final_answer>unstructured</final_answer>
@@ -77,21 +72,18 @@ def call_structured_agent(user_input):
     print("\n🤖 [structured AGENT]: Answering structured question...")
     res=structuredAgent(user_input)  # Call the structured agent function
     print("\n✅ Structured Agent Response:\n", res)
-    
+    text_to_speech(res)  # Convert response to speech
 
 def call_unstructured_agent(user_input):
     print("\n [unstructured AGENT]: Understanding symptoms and reasoning...")
     response= search_documents(user_input)  # Call the unstructured agent function
     print("\n✅ Unstructured Agent Response:\n", response)
+    text_to_speech(response)  # Convert response to speech
 
 def call_hybrid_agent(user_input):
     print("\n🔀 [HYBRID AGENT]: Handling both symptom story and question...")
     # You can call both agents or do smarter hybrid logic
   
-
-
-
-
 
 if match:
     final_answer = match.group(1).strip()

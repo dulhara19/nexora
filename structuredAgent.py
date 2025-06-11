@@ -19,6 +19,7 @@ def structuredAgent(user_input):
     - Convert it into a valid MySQL SELECT query.
     - Handle natural language date expressions like "today", "tomorrow", or weekdays.
     - Wrap your SQL output **only** inside <final_answer> tags. Do not add any explanations or comments.
+    - user will not put ? at the end of the question. but consider every question as a question. 
 
 Database tables:
 
@@ -57,6 +58,9 @@ User: "What’s on the cafe menu today?"
 User: "When is the bus to Kadawatha arriving at the main gate?"
 → <final_answer>SELECT route_name, departure_time, arrival_time FROM bus_schedules WHERE departure_location ='University Main Gate' AND date = CURRENT_DATE() AND arrival_location='Kadawatha' ;
 </final_answer>
+
+User: "What are the bus schedules for today"
+→ <final_answer>SELECT route_name, departure_time, arrival_time FROM bus_schedules WHERE departure_location ='University Main Gate' AND date = CURRENT_DATE();</final_answer>
 
 User: "When does the bus leave from campus to Athurugiriya tomorrow?"  
 → <final_answer>SELECT route_name, departure_time, arrival_time FROM bus_schedules WHERE departure_location ='University Main Gate' AND arrival_location LIKE '%Athurugiriya%' AND date = CURRENT_DATE() + INTERVAL 1 DAY;</final_answer>
