@@ -55,7 +55,7 @@ User: "What’s on the cafe menu today?"
 
 
 
-User: "When is the bus to Kadawatha arriving at the main gate?"
+User: "when is the bus to kadawatha arriving at the main gate?"
 → <final_answer>SELECT route_name, departure_time, arrival_time FROM bus_schedules WHERE departure_location ='University Main Gate' AND date = CURRENT_DATE() AND arrival_location='Kadawatha' ;
 </final_answer>
 

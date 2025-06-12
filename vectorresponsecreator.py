@@ -16,6 +16,7 @@ Your task:
 4. Format any time references clearly (e.g., 15:30 → 3:30 PM).
 5. Wrap ONLY your final friendly response inside <final_answer> tags.
 6. dont add * marks around the text
+7. dont give chain of thought or reasoning, just the final answer.
 
 ---
 
