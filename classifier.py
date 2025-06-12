@@ -1,11 +1,11 @@
 import re
-from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 from structuredAgent import structuredAgent
 from llmconnector import connector
 from unstructuredAgent import search_documents
 from tts import text_to_speech
 from stt import speech_to_text
+from hybridAgent import hybridclassifier
 
 
 def classify_and_route(user_input):
@@ -19,8 +19,8 @@ def classify_and_route(user_input):
 You are a classifier that determines whether a user question for a university chatbot is about "structured" data, "unstructured" information, or a "hybrid" of both.
 
 Your task is to output ONLY one of these three categories wrapped inside <final_answer> tags:
-- structured → questions about data stored in structured databases like timetables, bus schedules, or cafe menus.
-- unstructured → questions about university policies, procedures, or general information found in documents or FAQs.
+- structured → questions about timetables, bus schedules, or cafe menus(data stored in structured databases)
+- unstructured → questions about university policies, procedures, modules,subjects,degree or general information(not included :timetables,cafe menus, bus schedules)
 - hybrid → questions containing both structured and unstructured information requests in the same input.
 
 Examples:
@@ -60,15 +60,14 @@ Now classify this input:
 
     # debugging---
     # Print raw output for debugging
-    # print("\n📦 Raw LLM Output:\n", raw_output)
+    # print("\n✅ Raw LLM Output:\n", raw_output)
 
     # Extract <final_answer>
     match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
 
 
+#------AGENT FUNCTIONS--START----------------------------------------------
 
-
-#--------- AGENT FUNCTIONS--START----------------------------------------------
     def call_structured_agent(user_input):
         print("\n✅ [structured AGENT]: Answering structured question...")
         res=structuredAgent(user_input)  # Call the structured agent function
@@ -82,11 +81,14 @@ Now classify this input:
         response= search_documents(user_input)  # Call the unstructured agent function
         print("\n✅ Unstructured Agent Response:\n", response)
         text_to_speech(response)  # Convert response to speech
-        return res
+        return response
 
     def call_hybrid_agent(user_input):
         print("\n🔀 [HYBRID AGENT]: Handling both story and question...")
-#--------- AGENT FUNCTIONS--END---------------------------------------------      
+        respose=hybridclassifier(user_input)
+        return respose  # Call the hybrid agent function
+
+#---------AGENT FUNCTIONS--END------------------------------------------     
   
 
     if match:
@@ -94,7 +96,7 @@ Now classify this input:
         print("\n✅ Final Answer Extracted:")
         print(final_answer)
 
-# --------- ROUTING TO AGENTS---------
+#--------- ROUTING TO AGENTS---------
         if final_answer == "structured":
             res=call_structured_agent(user_input)
         elif final_answer == "unstructured":

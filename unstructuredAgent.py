@@ -1,6 +1,5 @@
 import chromadb
 import uuid
-from chromadb.config import Settings
 from sentence_transformers import SentenceTransformer
 from langchain_text_splitters import CharacterTextSplitter
 from vectorresponsecreator import create_response_from_semantic_context 
@@ -61,6 +60,8 @@ def search_documents(query, collection_name="unistructured", top_k=3):
     query_embedding = embedding_model.encode([query])[0]
     context = collection.query(query_embeddings=[query_embedding], n_results=top_k)
     formatted_context=format_chroma_results(context)
+
+    #----debugging output
     # print(formatted_context)
     # for i, doc in enumerate(context["documents"][0]):
     #     print(f"\nResult {i+1}:\n{doc}")
@@ -68,9 +69,10 @@ def search_documents(query, collection_name="unistructured", top_k=3):
     response_from_llm=create_response_from_semantic_context(formatted_context,query,current_time)
     result = response_from_llm.json()
     raw_output = result.get("response", "")
-
+       
+      #----debugging output
       # Print raw output for debugging
-      # print("\n📦 Raw LLM Output:\n", raw_output)
+      # print("\n✅ Raw LLM Output:\n", raw_output)
 
       # Step 5: Extract <final_answer>
     match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
@@ -81,6 +83,5 @@ def search_documents(query, collection_name="unistructured", top_k=3):
     return final_answer         
 
 
-
-# upload_documents(["./src/text_files/dsa.txt"])  # ✅ Use relative or full path
+# upload_documents(["./src/text_files/"]) # ✅ Use relative or full path
 # search_documents("Complexity Analysis (Big-O) covered in the DSA module?")
