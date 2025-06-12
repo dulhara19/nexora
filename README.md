@@ -1,5 +1,5 @@
 ## MULTI AGENTIC RAG
-![Alt Text](/src/images/Screenshot%202025-06-12%20054209.png)
+![Alt Text](/src/images/fig2.png)
 1. User Input
 The process starts with the user, who can provide input either by text or voice (SST = Speech-to-Text).
 2. Classifier/Router
