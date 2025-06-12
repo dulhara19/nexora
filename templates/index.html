@@ -9,15 +9,25 @@
 <body>
   <div class="container">
     <h1>Nexora AI Assistant 🌀</h1>
+    
     <textarea id="questionInput" placeholder="Ask me anything..."></textarea>
     <button onclick="sendQuestion()">Ask</button>
+
     <div id="responseBox">
-      <h3>Classification:</h3>
+      <h3>Detected Input Language:</h3>
+      <p id="originalText"></p>
+      
+      <h3>Translated to English:</h3>
+      <p id="translatedText"></p>
+
+      <h3>Classification (Intent Tag):</h3>
       <p id="classification"></p>
-      <h3>Answer:</h3>
+
+      <h3>Bot Response:</h3>
       <p id="responseText"></p>
     </div>
   </div>
+
   <script src="/static/script.js"></script>
 </body>
 </html>

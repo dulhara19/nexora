@@ -19,3 +19,6 @@ def detect_and_translate(text: str) -> str:
 print(detect_and_translate("ඔයා කොහොමද?"))  # Sinhala
 print(detect_and_translate("நீங்கள் எப்படி இருக்கிறீர்கள்?"))  # Tamil
 print(detect_and_translate("How are you today?"))  # English
+
+## tested and works fine
+# so used inside app.py

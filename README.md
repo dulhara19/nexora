@@ -1,6 +1,9 @@
 ## Nexora University Chatbot (ADVANCED MULTI AGENTIC RAG SYSTEM)
 Nexora is an AI-powered university chatbot that intelligently classifies student questions and provides answers using structured data (like timetables, bus schedules, cafe menus) or unstructured information (like policies, FAQs, and documents). It supports both text and speech input/output.
 
+<div display="flex">
+<img src="/report/fig2.png"  width="50%" alt="powerbi report"><img src="/report/fig3.png"  width="50%" alt="powerbi report"></div>
+
 ## Features
 
 - **Automatic Question Classification:** Distinguishes between structured, unstructured, and hybrid queries.
