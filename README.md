@@ -5,7 +5,8 @@ Nexora is an AI-powered university chatbot that intelligently classifies student
 <img src="/report/fig2.png"  width="50%" alt="powerbi report"><img src="/report/fig3.png"  width="50%" alt="powerbi report"></div>
 
 ## Features
-
+- **Multi Language Support**
+Supported Sinhala,Tamil 
 - **Automatic Question Classification:** Distinguishes between structured, unstructured, and hybrid queries.
 - **Structured Data Agent:** Converts natural language to SQL, queries the database, and generates friendly responses.
 - **Unstructured Data Agent:** Uses semantic search over documents and answers using context-aware LLM prompts.
@@ -17,7 +18,7 @@ Nexora is an AI-powered university chatbot that intelligently classifies student
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/nexora.git
+   git clone https://github.com/dulhara19/nexora.git
    cd nexora
    
 

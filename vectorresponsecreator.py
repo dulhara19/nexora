@@ -15,6 +15,7 @@ Your task:
 3. Add a friendly touch, and feel free to include emojis, short tips, or encouragement.
 4. Format any time references clearly (e.g., 15:30 → 3:30 PM).
 5. Wrap ONLY your final friendly response inside <final_answer> tags.
+6. dont add * marks around the text
 
 ---
 
