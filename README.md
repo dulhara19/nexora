@@ -34,23 +34,26 @@ Nexora is an AI-powered university chatbot that intelligently classifies student
    python app.py
 
 5. **Usage - API Endpoint:**
+
   ```bash
-Send a POST request to /ask with a JSON body:    
-{
-  "message": "When is the next bus to Kadawatha?"
-} 
+   Send a POST request to /ask with a JSON body:    
+   {
+     "message": "When is the next bus to Kadawatha?"
+   } 
+   ``` 
 
 6. **Speech Input:**
 Uncomment and use the speech_to_text() function in classifier.py for voice input.
 
-Notes
-- Database:
+### Notes
+
+- **Database**:
 Requires a MySQL database with tables: timetables, bus_schedules, cafe_menus.
 
-- Vector DB:
+- **Vector DB:**
 Uses ChromaDB for semantic search over unstructured documents.
 
-- LLM:
+- **LLM:**
 Connects to a local LLM API (see llmconnector.py).
 - in the project deepseekr1:8b 4k used(locally setup using ollama)
 - Embedding Model : all-MiniLM-L6-v2
@@ -60,7 +63,6 @@ Create a .env file with your database credentials and any required API keys:
 
 ![high level architecture](/src/images/fig2.png)
 for store structured data like time tables, bus schedules and cafe menus we have used MYSQL, and for other unstructured data we used CromaDB(vectordb). 
-
 
 1. User Input
  - The process starts with the user, who can provide input either by text or voice (SST = Speech-to-Text).
