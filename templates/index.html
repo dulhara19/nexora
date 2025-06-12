@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nexora AI Chatbot</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Nexora AI Assistant 🌀</h1>
+    <textarea id="questionInput" placeholder="Ask me anything..."></textarea>
+    <button onclick="sendQuestion()">Ask</button>
+    <div id="responseBox">
+      <h3>Classification:</h3>
+      <p id="classification"></p>
+      <h3>Answer:</h3>
+      <p id="responseText"></p>
+    </div>
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+</html>
