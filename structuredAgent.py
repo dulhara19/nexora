@@ -19,7 +19,7 @@ def structuredAgent(user_input):
     - Convert it into a valid MySQL SELECT query.
     - Handle natural language date expressions like "today", "tomorrow", or weekdays.
     - Wrap your SQL output **only** inside <final_answer> tags. Do not add any explanations or comments.
-    - user will not put ? at the end of the question. but consider every question as a question. 
+    - user will not put ? at the end of the question. but consider every query as a question. 
 
 Database tables:
 

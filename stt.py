@@ -11,6 +11,7 @@ def speech_to_text():
     try:
         text = recognizer.recognize_google(audio)
         print("📝 You said:", text)
+        return text
     except sr.UnknownValueError:
         print("😕 Sorry, I couldn't understand.")
     except sr.RequestError:
