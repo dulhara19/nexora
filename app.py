@@ -1,14 +1,23 @@
-# app.py (new file)
-from fastapi import FastAPI, Request
-from pydantic import BaseModel
-from classifier import classify_and_route  # wrap your classifier logic as a function
+from flask import Flask, request,jsonify,render_template
+from classifier import classify_and_route
 
-app = FastAPI()
+app = Flask(__name__, template_folder="templates", static_folder="static")
 
-class Query(BaseModel):
-    message: str
+@app.route("/")
+def home():
+    return render_template("index.html")
 
-@app.post("/ask")
-async def ask(query: Query):
-    result = classify_and_route(query.message)
-    return {"response": result}
+@app.route("/classify", methods=["POST"])
+def classify_endpoint():
+    data = request.get_json()
+    user_input = data.get("question")
+
+    if not user_input:
+        return jsonify({"error": "No question provided."}), 400
+
+    result = classify_and_route(user_input)
+    return jsonify(result)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
