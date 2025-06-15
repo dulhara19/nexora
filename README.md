@@ -2,7 +2,8 @@
 Nexora is an AI-powered university chatbot that intelligently classifies student questions and provides answers using structured data (like timetables, bus schedules, cafe menus) or unstructured information (like policies, FAQs, and documents). It supports both text and speech input/output.
 
 <div display="flex">
-<img src="/report/fig2.png"  width="50%" alt="powerbi report"><img src="/report/fig3.png"  width="50%" alt="powerbi report"></div>
+<img src="/report/fig2.png"  width="50%" alt="powerbi report"><img src="/report/fig1.png"  width="50%" alt="powerbi report"><img src="/report/fig3.png"  width="50%" alt="powerbi report">
+</div>
 
 ## Features
 - **Multi Language Support**
