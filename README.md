@@ -65,7 +65,7 @@ Connects to a local LLM API (see llmconnector.py).
 - Built with FastAPI, ChromaDB, LangChain, Sentence Transformers, and Ollama (or compatible LLM). 
 
 Create a .env file with your database credentials and any required API keys:
-
+## Architecture
 ![high level architecture](/src/images/fig2.png)
 for store structured data like time tables, bus schedules and cafe menus we have used MYSQL, and for other unstructured data we used CromaDB(vectordb). 
 
