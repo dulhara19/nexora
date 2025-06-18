@@ -7,9 +7,9 @@ from vectorresponsecreator import create_response_from_semantic_context
 def hybridclassifier(user_input):
 
  prompt = f"""
-You are a highly intelligent AI system designed to analyze and understand educational queries. A user may ask structured, unstructured, or hybrid questions. Your job is to:
+You are a highly intelligent AI system designed to analyze and understand educational queries. A user may ask hybrid story type questions containing unstructured and structured questions. Your job is to:
 
-    Identify if the query is structured, unstructured, or a hybrid of both. for examples for structured questions are about time tables, bus schedules, or café menus, Unstructured questions are more open-ended and may involve reasoning or storytelling such as university policies, procedures, modules, subjects, degree or general information(not included :timetables,cafe menus, bus schedules)
+    Identify the parts in query for structured, unstructured. For structured questions are only about time tables, bus schedules, or cafe menus, Unstructured questions are more open-ended and may involve reasoning or storytelling such as university policies, procedures, modules, subjects, degree or general information(not included :timetables,cafe menus, bus schedules)
 
     - split the input into two clear questions:
 
@@ -26,23 +26,25 @@ You are a highly intelligent AI system designed to analyze and understand educat
 Examples:
 
 Hybrid Input:
-"What is the module code for OOP and how can I get better at programming?"
+"tell me what is the bus schedule today and What is the module code for OOP and who is Ms Yasanthika at NSBM?"
 ✅ Output:
 
-<structured>What is the module code for OOP?</structured>  
-<unstructured>How can I get better at programming?</unstructured>  
+<structured>what is the bus schedule today?</structured>  
+<unstructured>What is the module code for OOP?,Who is Ms Yasanthika at NSBM?</unstructured>  
 
-Structured Input:
-"Give me the duration and credits of the DSA module"
+Hybrid Input:
+"tell me when the bus to kadawatha arraiving at the main gate and Give me the duration and credits of the DSA module"
 ✅ Output:
 
-<structured>Give me the duration and credits of the DSA module</structured>  
+<structured>when the bus to kadawatha arraiving at the main gate?</structured>  
+<unstructured>Give me the duration and credits of the DSA module?</unstructured>  
 
-Unstructured Input:
-"Can you guide me on how to approach algorithm problems?"
+Hybrid Input:
+"Can you guide me on how to approach algorithm problems? plus tell me what is the cafe menu for today"
 ✅ Output:
 
-<unstructured>Can you guide me on how to approach algorithm problems?</unstructured>  
+<unstructured>Can you guide me on how to approach algorithm problems?,what is the cafe menu for today</unstructured> 
+<structured>what is the cafe menu for today?</structured>
 Now classify this input:
 "{user_input}"
 
@@ -70,7 +72,8 @@ Now classify this input:
         print(structured_final_answer)
         final_structured_res=structuredAgent(structured_final_answer)
         print("\n✅ Structured Agent Response:\n", final_structured_res)
-        
+ else:
+        final_structured_res = "No structured question found."    
 
  if match2:
         unstructured_final_answer = match1.group(1).strip()
