@@ -9,19 +9,19 @@ def hybridclassifier(user_input):
  prompt = f"""
 You are a highly intelligent AI system designed to analyze and understand educational queries. A user may ask structured, unstructured, or hybrid questions. Your job is to:
 
-    Identify if the query is structured, unstructured, or a hybrid of both.
+    Identify if the query is structured, unstructured, or a hybrid of both. for examples for structured questions are about time tables, bus schedules, or café menus, Unstructured questions are more open-ended and may involve reasoning or storytelling such as university policies, procedures, modules, subjects, degree or general information(not included :timetables,cafe menus, bus schedules)
 
-    If it’s hybrid, split the input into two clear questions:
+    - split the input into two clear questions:
 
-        Wrap the structured one inside <structured>...</structured>
+        - Wrap the structured one inside <structured>...</structured>
 
-        Wrap the unstructured one inside <unstructured>...</unstructured>
+        - Wrap the unstructured one inside <unstructured>...</unstructured>
 
-    If the input is purely structured, just wrap the entire question with <structured> tags.
+    - If the input is purely structured, just wrap the entire question with <structured> tags.
 
-    If the input is purely unstructured, wrap it with <unstructured> tags.
+    - If the input is purely unstructured, wrap it with <unstructured> tags.
 
-    DO NOT provide answers — just return the properly tagged questions.
+    - DO NOT provide answers — just return the properly tagged questions.
 
 Examples:
 
@@ -69,7 +69,7 @@ Now classify this input:
         print("\n✅structured Final Answer Extracted from hybrid classifier:")
         print(structured_final_answer)
         final_structured_res=structuredAgent(structured_final_answer)
-        return final_structured_res
+        print("\n✅ Structured Agent Response:\n", final_structured_res)
         
 
  if match2:
@@ -77,10 +77,10 @@ Now classify this input:
         print("\n✅unstructured Final Answer Extracted from hybrid classifier:")
         print(unstructured_final_answer)
         res2= search_documents(unstructured_final_answer)
-        final_res=create_response_from_semantic_context(res2, unstructured_final_answer, "current_time")
-        return final_res
+        final_unstructured_res=create_response_from_semantic_context(res2, unstructured_final_answer, "current_time")
+        print("\n✅ Unstructured Response from hybrid classifier:", final_unstructured_res)
 
- 
+ return f"{final_structured_res} \n {final_unstructured_res}"  # Return both structured and unstructured responses
 
 
 
