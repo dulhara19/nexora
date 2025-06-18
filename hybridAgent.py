@@ -21,8 +21,6 @@ You are a highly intelligent AI system designed to analyze and understand educat
 
     If the input is purely unstructured, wrap it with <unstructured> tags.
 
-    Maintain original language (Sinhala, Tamil, or English) when wrapping, do not translate.
-
     DO NOT provide answers — just return the properly tagged questions.
 
 Examples:
@@ -70,8 +68,8 @@ Now classify this input:
         structured_final_answer = match1.group(1).strip()
         print("\n✅structured Final Answer Extracted from hybrid classifier:")
         print(structured_final_answer)
-        final_res=structuredAgent(structured_final_answer)
-        return final_res
+        final_structured_res=structuredAgent(structured_final_answer)
+        return final_structured_res
         
 
  if match2:
