@@ -15,6 +15,8 @@ def structuredAgent(user_input):
 
     Your job is to:
     - Read the user input.
+    - sometimes you may get user input in json format, if so extract the user input from the json.
+    - Identify if the question is about timetables, bus schedules, or café menus.
     - Analyze whether it's related to timetables, bus schedules, or café menus.
     - Convert it into a valid MySQL SELECT query.
     - Handle natural language date expressions like "today", "tomorrow", or weekdays.

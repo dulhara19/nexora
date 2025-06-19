@@ -47,24 +47,31 @@ Now return only a valid JSON object with double quotes on keys and values. No ex
         parsed = json.loads(json_block)
         structured_questions = parsed.get("structured", [])
         unstructured_questions = parsed.get("unstructured", [])
+        
+        print("\n🔍 Structured Questions:", structured_questions)
+        print("🔍 Unstructured Questions:", unstructured_questions)
 
         structured_answers = []
         for q in structured_questions:
             print(f"\n✅ Structured Q: {q}")
-            structured_answers.append(q)
+            structured_answers.append(structuredAgent(q))
 
 
         unstructured_answers = []
         for q in unstructured_questions:
             print(f"\n✅ Unstructured Q: {q}")
-            unstructured_answers.append(q)
+            unstructured_answers.append(search_documents(q))
+       
 
-        final_response = {
-            "structured_responses": structured_answers,
-            "unstructured_responses": unstructured_answers
-        }
+        
 
-        return final_response
+
+       #  final_response = {
+       #      "structured_responses": structured_answers,
+       #      "unstructured_responses": unstructured_answers
+       #  }
+
+       #  return final_response
 
     except json.JSONDecodeError as e:
         return {"error": f"JSON decoding failed: {str(e)}"}
@@ -73,6 +80,6 @@ Now return only a valid JSON object with double quotes on keys and values. No ex
 
 
 
-res=hybridclassifier("what is the lunch menu today, when is the OOP class, and how can I apply for leave?")
+res=hybridclassifier("what is the lunch menu today, when is the OOP class, and how can I apply for leave? and also tell me who is the head of the computer science department?")
 
 print("✅final question response object: ",res)
