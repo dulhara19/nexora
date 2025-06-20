@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nexora AI Chatbot</title>
   <link rel="stylesheet" href="/static/style.css" />
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
 </head>
-<body>
+<body style="display: flex;">
   <div class="container">
     <h1>Nexora AI Assistant 🌀</h1>
     
@@ -25,6 +29,15 @@
 
       <h3>Bot Response:</h3>
       <p id="responseText"></p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="workflow">
+      <h2>Workflow</h2>
+      
+      <!-- <div id="processFlow" class="process-container"></div> -->
+       <img src="/src/images/fig1.png" alt="">
+
     </div>
   </div>
 

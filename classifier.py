@@ -85,14 +85,15 @@ Now classify this input:
 
     def call_hybrid_agent(user_input):
         print("\n🔀 [HYBRID AGENT]: Handling both story and question...")
-        respose=hybridclassifier(user_input)
-        return respose  # Call the hybrid agent function
+        response=hybridclassifier(user_input)
+        return response  # Call the hybrid agent function
 
 #---------AGENT FUNCTIONS--END------------------------------------------     
   
 
     if match:
         final_answer = match.group(1).strip()
+        print("\n✅ User asked:" + final_answer+ "type question")
         print("\n✅ Final Answer Extracted:")
         print(final_answer)
 

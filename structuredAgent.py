@@ -3,7 +3,7 @@ from sqlconnector import get_connection
 from createresponse import create_response_from_llm
 import re
 from datetime import datetime
-
+datetime.today
 current_time = datetime.now().time()  # Gets current time (hours, minutes, seconds)
 #print("Current time:", current_time)
 
@@ -86,7 +86,7 @@ Now generate the SQL query for the following user input:
     raw_output = result.get("response", "")
 
 # Print raw output for debugging
-    print("\n📦 Raw LLM Output:\n", raw_output)
+    # print("\n📦 Raw LLM Output:\n", raw_output)
 
 # Step 5: Extract <final_answer>
     match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)

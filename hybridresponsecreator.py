@@ -19,6 +19,8 @@ def hybridresponsecreator(structured_question,unstructured_question,structured_a
     - Make nice response comparing current time,date and the context if needed. 
     - Always wrap your final response inside <final_answer></final_answer> tags.
     - Try to add supportive informations and be more helpful in your response.
+    - just provide the answer, no need to explain how you got the answer or any reasoning.
+    - dont make long answers, just be concise and to the point.
 
     here is the information you have:
     - structured_questions: {structured_question}

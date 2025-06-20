@@ -3,7 +3,10 @@ import re
 from structuredAgent import structuredAgent
 from llmconnector import connector
 from unstructuredAgent import search_documents
-from vectorresponsecreator import create_response_from_semantic_context
+from hybridresponsecreator import hybridresponsecreator
+from datetime import datetime
+
+date_time=datetime.now() 
 
 def hybridclassifier(user_input):
     prompt = f"""You are a highly intelligent university chatbot preprocessor. A user may ask story-like hybrid questions that contain multiple sub-questions. Your task is to:
@@ -34,7 +37,7 @@ Now return only a valid JSON object with double quotes on keys and values. No ex
     response = connector(prompt)
     result = response.json()
     raw_output = result.get("response", "")
-    print("🔍 Raw LLM Output:\n", raw_output)
+    # print("🔍 Raw LLM Output:\n", raw_output)
 
     # ✅ Extract only the JSON block using more precise pattern
     match = re.search(r"{[\s\S]*?}", raw_output)
@@ -61,25 +64,29 @@ Now return only a valid JSON object with double quotes on keys and values. No ex
         for q in unstructured_questions:
             print(f"\n✅ Unstructured Q: {q}")
             unstructured_answers.append(search_documents(q))
-       
-
         
+        response=hybridresponsecreator(structured_questions,unstructured_questions, structured_answers,unstructured_answers,date_time)
+        
+        result = response.json()
+        raw_output = result.get("response", "")
+       
+      #----debugging output
+      # Print raw output for debugging
+      # print("\n✅ Raw LLM Output:\n", raw_output)
 
 
-       #  final_response = {
-       #      "structured_responses": structured_answers,
-       #      "unstructured_responses": unstructured_answers
-       #  }
-
-       #  return final_response
+      # Step 5: Extract <final_answer>
+        match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
+        if match:
+          final_answer = match.group(1).strip()
+          print("\n✅ Final Answer Extracted from hybrid Agent")
+    
+          return final_answer
 
     except json.JSONDecodeError as e:
         return {"error": f"JSON decoding failed: {str(e)}"}
 
 
+# res_from_hybridagent=hybridclassifier("what is the lunch menu today, when is the OOP class, and how can I apply for leave? and also tell me who is the head of the computer science department?")
 
-
-
-res=hybridclassifier("what is the lunch menu today, when is the OOP class, and how can I apply for leave? and also tell me who is the head of the computer science department?")
-
-print("✅final question response object: ",res)
+# print("✅final question response object: ",res_from_hybridagent)

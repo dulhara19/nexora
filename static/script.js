@@ -5,6 +5,7 @@ async function sendQuestion() {
   const originalText = document.getElementById("originalText");
   const translatedText = document.getElementById("translatedText");
 
+
   if (!question.trim()) {
     alert("Please enter a question.");
     return;
@@ -35,3 +36,34 @@ async function sendQuestion() {
     console.error(err);
   }
 }
+
+
+function showProcessFlow(stages) {
+  const container = document.getElementById("processFlow");
+  container.innerHTML = ""; // Clear previous flow
+
+  stages.forEach((stage, index) => {
+    const box = document.createElement("div");
+    box.className = "process-box";
+    box.textContent = stage;
+
+    // Add with animation delay
+    setTimeout(() => {
+      container.appendChild(box);
+    }, index * 200); // Delay each by 200ms
+  });
+}
+
+showProcessFlow(["", "", ""]);
+
+// showProcessFlow([
+//   "User Input",
+//   "Language Detection",
+//   "Translation",
+//   "Classification",
+//   "Vector Search",
+//   "LLM Response",
+//   "Text-to-Speech",
+//   "Display",
+  
+// ]);
