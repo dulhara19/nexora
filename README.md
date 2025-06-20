@@ -7,10 +7,8 @@ Nexora is an AI-powered university chatbot that intelligently classifies student
 
 ## Hybrid Agent
 
-
 <div style="flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
-    <img styles="padding:5px" src="/report/fig5.png" width="50%" alt="nexora screenshots">
-    <img styles="padding:5px" src="/report/fig6.png" width="50%" alt="nexora screenshots">
+    <img styles="padding:5px" src="/report/fig5.png" width="50%" alt="nexora screenshots"><img styles="padding:5px" src="/report/fig6.png" width="50%" alt="nexora screenshots">
 </div>
 
 
