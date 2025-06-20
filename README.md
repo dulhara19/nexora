@@ -2,19 +2,19 @@
 Nexora is an AI-powered university chatbot that intelligently classifies student questions and provides answers using structured data (like timetables, bus schedules, cafe menus) or unstructured information (like policies, FAQs, and documents). It supports both text and speech input/output.
 
 <div style="display: flex; padding=5px">
-  <img styles="padding:5px" src="/report/fig2.png" width="33.33%" alt="powerbi report"><img src="/report/fig3.png" width="33.33%"  alt="powerbi report"><img style="padding:5px" src="/report/fig4.png" width="33.33%" alt="powerbi report">
+  <img styles="padding:5px" src="/report/fig2.png" width="33.33%" alt="nexora screenshots"><img src="/report/fig3.png" width="33.33%"  alt="nexora screenshots"><img style="padding:5px" src="/report/fig4.png" width="33.33%" alt="powerbi report">
 </div>
 
 ---
 
- <div style="display: flex">
- <div style="width: 50%;">
-  <img style="padding=5px"  src="/report/fig5.png" width="25%" alt="powerbi report">
- </div>
- <div style="width: 50%;">
-  specially when user asked story type questions combining both structured and unstructured type of questions, the query will be handles by Hybrid agent.
- </div>
- </div>
+<div style="display: flex; gap: 2px;">
+  <div style="flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+    <img styles="padding:5px" src="/report/fig2.png" width="33.33%" alt="nexora screenshots">
+  </div>
+  <div style="flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+   Specially when user asked story type questions combining both structured and unstructured type of questions, the query will be handles by Hybrid agent. 
+  </div>
+</div>
 
 
 ## Features
