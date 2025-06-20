@@ -5,11 +5,11 @@ Nexora is an AI-powered university chatbot that intelligently classifies student
   <img styles="padding:5px" src="/report/fig2.png" width="33.33%" alt="nexora screenshots"><img src="/report/fig3.png" width="33.33%"  alt="nexora screenshots"><img style="padding:5px" src="/report/fig4.png" width="33.33%" alt="powerbi report">
 </div>
 
----
+## Hybrid Agent
 
 <div style="display: flex; gap: 2px;">
   <div style="flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
-    <img styles="padding:5px" src="/report/fig2.png" width="33.33%" alt="nexora screenshots">
+    <img styles="padding:5px" src="/report/fig5.png" width="50%" alt="nexora screenshots">
   </div>
   <div style="flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
    Specially when user asked story type questions combining both structured and unstructured type of questions, the query will be handles by Hybrid agent. 
