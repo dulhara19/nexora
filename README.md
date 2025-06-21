@@ -77,7 +77,7 @@ Create a .env file with your database credentials and any required API keys:
 ![high level architecture](/src/images/fig2.png)
 for store structured data like time tables, bus schedules and cafe menus we have used MYSQL, and for other unstructured data we used CromaDB(vectordb). 
 
-1. User Input
+1. ### User Input
  - The process starts with the user, who can provide input either by text or voice (SST = Speech-to-Text).
 2. Classifier/Router
 - The input is sent to the Classifier/Router.
