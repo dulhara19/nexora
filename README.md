@@ -77,30 +77,30 @@ for store structured data like time tables, bus schedules and cafe menus we have
 **User Input**
  - The process starts with the user, who can provide input either by text or voice (SST = Speech-to-Text).
 **Classifier/Router**
-- The input is sent to the Classifier/Router.
-- This component determines if the question is about:
-- Structured data (e.g., timetables, bus schedules)
-- Unstructured data (e.g., policies, FAQs)
-- Hybrid (both types)
+ - The input is sent to the Classifier/Router.
+ - This component determines if the question is about:
+ - Structured data (e.g., timetables, bus schedules)
+ - Unstructured data (e.g., policies, FAQs)
+ - Hybrid (both types)
 **Agents**
-- Based on classification, the router sends the query to one of - three agents:
-- AGENT1 (Structured): Handles queries that require database access.
-- AGENT2 (Unstructured): Handles queries that require searching through documents using embeddings and vector similarity.
-- AGENT3 (Hybrid): Handles queries that need both structured and unstructured data.
+ - Based on classification, the router sends the query to one of - three agents:
+ - AGENT1 (Structured): Handles queries that require database access.
+ - AGENT2 (Unstructured): Handles queries that require searching through documents using embeddings and vector similarity.
+ - AGENT3 (Hybrid): Handles queries that need both structured and unstructured data.
 **Structured Path**
-- If structured, the agent queries the MySQL DB for relevant data.
+ - If structured, the agent queries the MySQL DB for relevant data.
 The result is processed and sent to an LLM (Large Language Model) for response generation.
 **Unstructured Path**
-- If unstructured, the agent uses an Embedding Model to encode the query.
-- The encoded query is used to perform a similarity search in the Vector DB (e.g., ChromaDB).
-- The most relevant document chunks are retrieved as context.
-- The context and query are sent to the LLM for response generation.
+ - If unstructured, the agent uses an Embedding Model to encode the query.
+ - The encoded query is used to perform a similarity search in the Vector DB (e.g., ChromaDB).
+ - The most relevant document chunks are retrieved as context.
+ - The context and query are sent to the LLM for response generation.
 **Hybrid Path**
-- For hybrid queries, both structured and unstructured agents may be involved, and their outputs are combined before being sent to the LLM.
+ - For hybrid queries, both structured and unstructured agents may be involved, and their outputs are combined before being sent to the LLM.
 **LLM (Large Language Model)**
-- The LLM receives the context and query, and generates a friendly, conversational response.
+ - The LLM receives the context and query, and generates a friendly, conversational response.
 **Response**
-- The response is returned to the user as text.
+ - The response is returned to the user as text.
 Optionally, the response can be converted to speech using TTS (Text-to-Speech) for voice output.
 
 ---
