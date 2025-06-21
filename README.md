@@ -76,12 +76,14 @@ for store structured data like time tables, bus schedules and cafe menus we have
 
 **User Input**
  - The process starts with the user, who can provide input either by text or voice (SST = Speech-to-Text).
+
 **Classifier/Router**
  - The input is sent to the Classifier/Router.
  - This component determines if the question is about:
  - Structured data (e.g., timetables, bus schedules)
  - Unstructured data (e.g., policies, FAQs)
  - Hybrid (both types)
+ 
 **Agents**
  - Based on classification, the router sends the query to one of - three agents:
  - AGENT1 (Structured): Handles queries that require database access.
