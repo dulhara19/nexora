@@ -6,12 +6,9 @@ Nexora is an AI-powered university chatbot that intelligently classifies student
 </div>
 
 ## Hybrid Agent
-
 <div style="flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
     <img styles="padding:5px" src="/report/fig5.png" width="40%" alt="nexora screenshots"><img styles="padding:5px" src="/report/fig6.png" width="60%" alt="nexora screenshots">
 </div>
-
-
 
 ## Features
 - **Multi Language Support**
@@ -19,7 +16,7 @@ Supported Sinhala,Tamil
 - **Automatic Question Classification:** Distinguishes between structured, unstructured, and hybrid queries.
 - **Structured Data Agent:** Converts natural language to SQL, queries the database, and generates friendly responses.
 - **Unstructured Data Agent:** Uses semantic search over documents and answers using context-aware LLM prompts.
-- **Hybrid Agent (Planned):** Handles queries needing both structured and unstructured data.
+- **Hybrid Agent:** Handles queries needing both structured and unstructured story type questions.
 - **Speech-to-Text & Text-to-Speech:** Voice input and output for accessibility.
 - **FastAPI Backend:** Simple API endpoint for chatbot interaction.
 ---
@@ -77,32 +74,32 @@ Create a .env file with your database credentials and any required API keys:
 ![high level architecture](/src/images/fig2.png)
 for store structured data like time tables, bus schedules and cafe menus we have used MYSQL, and for other unstructured data we used CromaDB(vectordb). 
 
-1. ### User Input
+1. **User Input**
  - The process starts with the user, who can provide input either by text or voice (SST = Speech-to-Text).
-2. Classifier/Router
+2. **Classifier/Router**
 - The input is sent to the Classifier/Router.
 - This component determines if the question is about:
 - Structured data (e.g., timetables, bus schedules)
 - Unstructured data (e.g., policies, FAQs)
 - Hybrid (both types)
-3. Agents
+3. **Agents**
 - Based on classification, the router sends the query to one of - three agents:
 - AGENT1 (Structured): Handles queries that require database access.
 - AGENT2 (Unstructured): Handles queries that require searching through documents using embeddings and vector similarity.
 - AGENT3 (Hybrid): Handles queries that need both structured and unstructured data.
-4. Structured Path
+4. **Structured Path**
 - If structured, the agent queries the MySQL DB for relevant data.
 The result is processed and sent to an LLM (Large Language Model) for response generation.
-5. Unstructured Path
+5. **Unstructured Path**
 - If unstructured, the agent uses an Embedding Model to encode the query.
 - The encoded query is used to perform a similarity search in the Vector DB (e.g., ChromaDB).
 - The most relevant document chunks are retrieved as context.
 - The context and query are sent to the LLM for response generation.
-6. Hybrid Path
+6. **Hybrid Path**
 - For hybrid queries, both structured and unstructured agents may be involved, and their outputs are combined before being sent to the LLM.
-7. LLM (Large Language Model)
+7. **LLM (Large Language Model)**
 - The LLM receives the context and query, and generates a friendly, conversational response.
-8. Response
+8. **Response**
 - The response is returned to the user as text.
 Optionally, the response can be converted to speech using TTS (Text-to-Speech) for voice output.
 
