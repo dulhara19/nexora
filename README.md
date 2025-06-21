@@ -16,7 +16,7 @@ Supported Sinhala,Tamil
 - **Automatic Question Classification:** Distinguishes between structured, unstructured, and hybrid queries.
 - **Structured Data Agent:** Converts natural language to SQL, queries the database, and generates friendly responses.
 - **Unstructured Data Agent:** Uses semantic search over documents and answers using context-aware LLM prompts.
-- **Hybrid Agent:** Handles queries needing both structured and unstructured story type questions.
+- **Hybrid Agent:** Handles queries needing both structured and unstructured data(Handles story type questions containing both type of questions)
 - **Speech-to-Text & Text-to-Speech:** Voice input and output for accessibility.
 - **FastAPI Backend:** Simple API endpoint for chatbot interaction.
 ---
