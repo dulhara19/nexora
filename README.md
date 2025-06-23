@@ -112,6 +112,6 @@ Optionally, the response can be converted to speech using TTS (Text-to-Speech) f
 
 ---
 Originally made from scratch. no MCP used. custom configured!
-**made by DULHARA :)**
+**made by DULHARA**
 
 
