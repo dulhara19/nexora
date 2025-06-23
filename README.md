@@ -111,7 +111,7 @@ The result is processed and sent to an LLM (Large Language Model) for response g
 Optionally, the response can be converted to speech using TTS (Text-to-Speech) for voice output.
 
 ---
-Originally made from scratch. no MCP used. custom configured!
+Originally made from scratch. no MCP used. custom configured! feel free to contact me if needed. 
 **made by DULHARA**
 
 
