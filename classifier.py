@@ -80,12 +80,17 @@ Now classify this input:
         print("\n✅ [Unstructured AGENT]: Understanding story and reasoning...")
         response= search_documents(user_input)  # Call the unstructured agent function
         print("\n✅ Unstructured Agent Response:\n", response)
+        if not response:
+            response = "Sorry, I couldn't find an answer to your question."
         text_to_speech(response)  # Convert response to speech
         return response
 
     def call_hybrid_agent(user_input):
         print("\n✅ [HYBRID AGENT]: Handling both story and question...")
         response=hybridclassifier(user_input)
+        print("\n✅ Hybrid Agent Response:\n", response)
+        if not response:
+            response = "Sorry, I couldn't find an answer to your question."
         text_to_speech(response)  # Convert response to speech
         return response  # Call the hybrid agent function
 
