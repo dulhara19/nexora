@@ -3,6 +3,10 @@ from sqlconnector import get_connection
 from createresponse import create_response_from_llm
 import re
 from datetime import datetime
+from datetime import datetime
+
+date_time=datetime.now() 
+
 datetime.today
 current_time = datetime.now().time()  # Gets current time (hours, minutes, seconds)
 #print("Current time:", current_time)
@@ -102,7 +106,7 @@ Now generate the SQL query for the following user input:
 
        print("\n✅ Query Results generated:")
 
-       response=create_response_from_llm(all_rows, user_input,query,current_time)
+       response=create_response_from_llm(all_rows, user_input,query,date_time)
 
        # Step 4: Parse and extract classification
        result = response.json()
