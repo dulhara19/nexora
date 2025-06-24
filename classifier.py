@@ -66,7 +66,7 @@ Now classify this input:
     match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
 
 
-#------AGENT FUNCTIONS--START----------------------------------------------
+#------AGENT CALLING FUNCTIONS--START----------------------------------------------
 
     def call_structured_agent(user_input):
         print("\n✅ [structured AGENT]: Answering structured question...")
@@ -84,20 +84,21 @@ Now classify this input:
         return response
 
     def call_hybrid_agent(user_input):
-        print("\n🔀 [HYBRID AGENT]: Handling both story and question...")
+        print("\n✅ [HYBRID AGENT]: Handling both story and question...")
         response=hybridclassifier(user_input)
+        
         return response  # Call the hybrid agent function
 
-#---------AGENT FUNCTIONS--END------------------------------------------     
+#---------AGENT CALLING FUNCTIONS--END------------------------------------------     
   
 
     if match:
         final_answer = match.group(1).strip()
         print("\n✅ User asked:" + final_answer+ "type question")
-        print("\n✅ Final Answer Extracted:")
+        print("\n✅ Type of QUESTION :")
         print(final_answer)
 
-#--------- ROUTING TO AGENTS---------
+#--------- ROUTING TO AGENTS-START--------
         if final_answer == "structured":
             res=call_structured_agent(user_input)
         elif final_answer == "unstructured":
@@ -105,12 +106,12 @@ Now classify this input:
         elif final_answer == "hybrid":
             res=call_hybrid_agent(user_input)
         else:
-            print("⚠️ Unknown classification.")
+            print("🔴Unknown classification.")
     else:
-        print("\n❌ No <final_answer> tag found in the response.")
+        print("\n🔴No <final_answer> tag found in the response.")
     return {
     "classification": final_answer,
     "response": str(res)  # Ensures it's always JSON-serializable
     }
 
-
+#--------- ROUTING TO AGENTS-END--------
