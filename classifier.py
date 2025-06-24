@@ -86,7 +86,7 @@ Now classify this input:
     def call_hybrid_agent(user_input):
         print("\n✅ [HYBRID AGENT]: Handling both story and question...")
         response=hybridclassifier(user_input)
-        
+        text_to_speech(response)  # Convert response to speech
         return response  # Call the hybrid agent function
 
 #---------AGENT CALLING FUNCTIONS--END------------------------------------------     
