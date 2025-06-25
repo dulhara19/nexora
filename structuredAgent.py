@@ -90,7 +90,7 @@ Now generate the SQL query for the following user input:
     raw_output = result.get("response", "")
 
 # Print raw output for debugging
-    # print("\n📦 Raw LLM Output:\n", raw_output)
+    # print("\n Raw LLM Output:\n", raw_output)
 
 # Step 5: Extract <final_answer>
     match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
@@ -99,14 +99,14 @@ Now generate the SQL query for the following user input:
        query = match.group(1).strip()
        if not query.endswith(";"):
           query += ";" 
-       print("\n✅ qery generated:")
+       print("\n✅ qery generated:✅Sending to database..")
        print(query)
        conn=get_connection()
        cursor=conn.cursor()
        cursor.execute(query)
        all_rows = cursor.fetchall()
 
-       print("\n✅ Query Results generated:")
+       print("\n✅Query Results generated from DB:")
 
        response=create_response_from_llm(all_rows, user_input,query,date_time)
 
@@ -115,13 +115,13 @@ Now generate the SQL query for the following user input:
        raw_output = result.get("response", "")
 
       # Print raw output for debugging
-      # print("\n📦 Raw LLM Output:\n", raw_output)
+      # print("\n📦Raw LLM Output:\n", raw_output)
 
       # Step 5: Extract <final_answer>
        match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
        if match:
           final_answer = match.group(1).strip()
-          print("\n✅ Final Answer Extracted:")
+          print("\n✅Final Answer Extracted from Unstructured Agent..")
         # print(final_answer)
     else:
        print("🔴No <final_answer> tag found in the response.")
