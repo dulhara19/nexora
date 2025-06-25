@@ -3,12 +3,12 @@ from sqlconnector import get_connection
 from createresponse import create_response_from_llm
 import re
 from datetime import datetime
-from datetime import datetime
+
 
 date_time=datetime.now() 
 
-datetime.today
-current_time = datetime.now().time()  # Gets current time (hours, minutes, seconds)
+# datetime.today
+# current_time = datetime.now().time()  # Gets current time (hours, minutes, seconds)
 #print("Current time:", current_time)
 
 
@@ -97,6 +97,8 @@ Now generate the SQL query for the following user input:
 
     if match:
        query = match.group(1).strip()
+       if not query.endswith(";"):
+          query += ";" 
        print("\n✅ qery generated:")
        print(query)
        conn=get_connection()
@@ -121,6 +123,9 @@ Now generate the SQL query for the following user input:
           final_answer = match.group(1).strip()
           print("\n✅ Final Answer Extracted:")
         # print(final_answer)
+    else:
+       print("🔴No <final_answer> tag found in the response.")
+       final_answer = "Sorry, I couldn't generate a valid SQL query for your question."    
     return final_answer         
 
 # structuredAgent("When is the bus to kadawatha arriving at the main gate?")
