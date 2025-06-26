@@ -6,11 +6,11 @@ from vectorresponsecreator import create_response_from_semantic_context
 from datetime import datetime
 import re
 
-current_time = datetime.now().time() 
+date_time=datetime.now() 
+# current_time = datetime.now().time() 
 
-# ✅ Create persistent Chroma client
-chroma_client = chromadb.PersistentClient(path="./chroma_db")  # ← THIS IS THE FIX
-
+# Create persistent Chroma client
+chroma_client = chromadb.PersistentClient(path="./chroma_db")
 embedding_model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 
@@ -66,13 +66,13 @@ def search_documents(query, collection_name="unistructured", top_k=3):
     # for i, doc in enumerate(context["documents"][0]):
     #     print(f"\nResult {i+1}:\n{doc}")
 
-    response_from_llm=create_response_from_semantic_context(formatted_context,query,current_time)
+    response_from_llm=create_response_from_semantic_context(formatted_context,query,date_time)
     result = response_from_llm.json()
     raw_output = result.get("response", "")
        
       #----debugging output
       # Print raw output for debugging
-      # print("\n✅ Raw LLM Output:\n", raw_output)
+      # print("\n✅Raw LLM Output:\n", raw_output)
 
       # Step 5: Extract <final_answer>
     match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
