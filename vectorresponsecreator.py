@@ -32,6 +32,12 @@ context: ["The university's vision is to be a leading institution in education a
 current_time: 09:15 AM  
 → <final_answer>Absolutely! 🌟 The university's vision is to be a leading institution in education and research, fostering innovation and excellence across all fields. They’re all about sustainable development and making a positive impact! 🌍✨</final_answer>
 
+user_question: "where can i find Ms. Yasanthika at right now?"
+context: ["Ms. Yasanthika cabin room is L2-101, working on her research project. available time is 10:00 AM to 4:00 PM on weekdays."]
+current_time: 11:30 PM  
+→ <final_answer>im sorry to say that now its 11:30 PM huh! she is sleeping right now.. She’s available from 10:00 AM to 4:00 PM on weekdays, so you can catch her anytime during those hours! Good luck! 🍀✨</final_answer>
+
+
 ---
 
 Now it’s your turn:
