@@ -106,7 +106,7 @@ Now generate the SQL query for the following user input:
        cursor.execute(query)
        all_rows = cursor.fetchall()
 
-       print("\n✅Query Results generated from DB:")
+       print("\n✅Query Results generated from MYsqlDB:")
 
        response=create_response_from_llm(all_rows, user_input,query,date_time)
 
