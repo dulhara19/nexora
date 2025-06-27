@@ -17,6 +17,7 @@ Your job:
 4. Wrap ONLY the final answer in <final_answer> tags, nothing else.
 5. Use markdown formatting for emphasis. 
 6. make sure the answer is easy to read and understand.
+7. make the response beautifull and well formatted with markdown.
 
 ---
 
