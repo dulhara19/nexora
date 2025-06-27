@@ -13,7 +13,7 @@ async function sendQuestion() {
 
   // Set loading UI
   classification.textContent = "Thinking...";
-  responseText.textContent = "";
+  responseText.innerHTML = "";
   originalText.textContent = "";
   translatedText.textContent = "";
 
@@ -29,7 +29,15 @@ async function sendQuestion() {
     originalText.textContent = data.original_input || "Unknown";
     translatedText.textContent = data.translated_input || "Already English";
     classification.textContent = data.result?.tag || "Unclassified";
-    responseText.textContent = data.result?.response || "No response found.";
+
+
+  // Render Markdown in the response
+    if (data.result?.response) {
+      responseText.innerHTML = marked.parse(data.result.response); // Markdown → HTML
+    } else {
+      responseText.textContent = "No response found.";
+    }
+
   } catch (err) {
     classification.textContent = "Error";
     responseText.textContent = "Something went wrong!";
@@ -67,3 +75,5 @@ showProcessFlow(["", "", ""]);
 //   "Display",
   
 // ]);
+
+
