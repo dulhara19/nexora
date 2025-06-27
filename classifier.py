@@ -42,7 +42,7 @@ Examples:
 
 - "When is the next chemistry exam and how do I request a medical leave?" → <final_answer>hybrid</final_answer>
 - "I missed my exam last week because of illness. When is the makeup exam scheduled?" → <final_answer>hybrid</final_answer>
-- "What time is the bus coming, and what documents do I need to graduate?" → <final_answer>hybrid</final_answer>
+- "What time is the bus coming, and what documents do I need to graduate? also tell me who is Ms Yasanthika?" → <final_answer>hybrid</final_answer>
 - "Is the cafeteria open late on exam days and who do I contact for disability accommodations?" → <final_answer>hybrid</final_answer>
 - "When is the next bus and what is the grading policy?" → <final_answer>hybrid</final_answer>
 
@@ -103,7 +103,8 @@ Now classify this input:
         print("\n✅ Type of QUESTION :")
         print(final_answer)
 
-#--------- ROUTING TO AGENTS-START--------
+#--------- ROUTING TO AGENTS-START---------------------------------------------
+
         if final_answer == "structured":
             res=call_structured_agent(user_input)
         elif final_answer == "unstructured":
@@ -119,4 +120,4 @@ Now classify this input:
     "response": str(res)  # Ensures it's always JSON-serializable
     }
 
-#--------- ROUTING TO AGENTS-END--------
+#--------- ROUTING TO AGENTS-END----------------------------------------------
