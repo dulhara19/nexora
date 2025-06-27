@@ -16,7 +16,7 @@ def hybridclassifier(user_input):
     - "structured": a list of structured questions (only about bus schedules, timetables, cafe menus)
     - "unstructured": a list of unstructured questions (about university policies, modules, procedures, staff, etc.)
 
-📌 Example:
+Example 01:
 
 Input: "tell me the lunch menu today, when is the OOP class, and how can I apply for leave?"
 Output:
@@ -30,6 +30,22 @@ Output:
   ]
 }}
 
+Example 02:
+
+Input: "what is the lunch menu today, when is the OOP class, and how can I apply for leave? and also tell me who is the head of the computer science department?, when the bus to kadawatha arriving at the main gate?"
+Output:
+{{
+  "structured": [
+    "What is the lunch menu today?",
+    "When is the OOP class?",
+    "When is the bus to kadawatha arriving at the main gate?"
+  ],
+  "unstructured": [
+    "How can I apply for leave?",
+    "Who is the head of the computer science department?"
+  ]
+}}
+
 Input: "{user_input}"
 Now return only a valid JSON object with double quotes on keys and values. No explanations, only the JSON.
 """
@@ -37,7 +53,7 @@ Now return only a valid JSON object with double quotes on keys and values. No ex
     response = connector(prompt)
     result = response.json()
     raw_output = result.get("response", "")
-    # print("🔍 Raw LLM Output:\n", raw_output)
+    # print("Raw LLM Output:\n", raw_output)
 
     # ✅ Extract only the JSON block using more precise pattern
     match = re.search(r"{[\s\S]*?}", raw_output)
@@ -51,8 +67,8 @@ Now return only a valid JSON object with double quotes on keys and values. No ex
         structured_questions = parsed.get("structured", [])
         unstructured_questions = parsed.get("unstructured", [])
         
-        print("\n🔍 Structured Questions:", structured_questions)
-        print("🔍 Unstructured Questions:", unstructured_questions)
+        print("\n✅ Structured Questions:", structured_questions)
+        print("✅ Unstructured Questions:", unstructured_questions)
 
         structured_answers = []
         for q in structured_questions:
