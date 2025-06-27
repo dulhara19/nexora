@@ -45,11 +45,11 @@ Supported Sinhala,Tamil
 
 5. **Usage - API Endpoint:**
 
-  ```bash
-   Send a POST request to /ask with a JSON body:    
-   {
-     "message": "When is the next bus to Kadawatha?"
-   } 
+   ```bash
+    Send a POST request to /ask with a JSON body:    
+    {
+      "message": "When is the next bus to Kadawatha?"
+    } 
    ``` 
 
 6. **Speech Input:**
@@ -72,7 +72,7 @@ Connects to a local LLM API (see llmconnector.py).
 Create a .env file with your database credentials and any required API keys:
 ## Architecture
 ![high level architecture](/src/images/fig2.png)
-for store structured data like time tables, bus schedules and cafe menus we have used MYSQL, and for other unstructured data we used CromaDB(vectordb). 
+for store structured data like time tables, bus schedules and cafe menus i have used MYSQL, and for other unstructured data i used CromaDB(vectordb). 
 
 **User Input**
  - The process starts with the user, who can provide input either by text or voice (SST = Speech-to-Text).
@@ -111,7 +111,7 @@ The result is processed and sent to an LLM (Large Language Model) for response g
 Optionally, the response can be converted to speech using TTS (Text-to-Speech) for voice output.
 
 ---
-Originally made from scratch. no MCP used. custom configured! feel free to contact me if needed. 
+Originally made from scratch. No MCP used. Custom configured! feel free to contact me if needed. 
 **made by DULHARA**
 
 
