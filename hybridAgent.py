@@ -68,7 +68,7 @@ Now return only a valid JSON object with double quotes on keys and values. No ex
         unstructured_questions = parsed.get("unstructured", [])
         
         print("\n✅ Structured Questions:", structured_questions)
-        print("✅ Unstructured Questions:", unstructured_questions)
+        print("\n✅ Unstructured Questions:", unstructured_questions)
 
         structured_answers = []
         for q in structured_questions:
