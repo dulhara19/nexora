@@ -33,7 +33,7 @@ async function sendQuestion() {
 
   // Render Markdown in the response
     if (data.result?.response) {
-      responseText.innerHTML = marked.parse(data.result.response); // Markdown → HTML
+      responseText.innerHTML = DOMPurify.sanitize(marked.parse(data.result.response)); // Markdown → HTML
     } else {
       responseText.textContent = "No response found.";
     }

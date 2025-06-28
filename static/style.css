@@ -102,6 +102,27 @@ button:hover {
   content: "";
 }
 
+#responseText strong {
+  font-weight: bold;
+  color: #2563eb; /* Blue for bold text */
+}
+
+#responseText em {
+  font-style: italic;
+}
+
+#responseText code {
+  background: #f3f4f6;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+#responseText ul, #responseText ol {
+  margin-left: 20px;
+  line-height: 1.6;
+}
+
 @keyframes fadeSlideUp {
   0% {
     opacity: 0;

@@ -22,6 +22,7 @@ Your task is to output ONLY one of these three categories wrapped inside <final_
 - structured → questions about timetables, bus schedules, or cafe menus(data stored in structured databases)
 - unstructured → questions about university policies, procedures, modules,subjects,degree or general information(not included :timetables,cafe menus, bus schedules)
 - hybrid → questions containing both structured and unstructured information requests in the same input.
+- If user asks multiple questions just classify as hybrid
 
 Examples:
 - "What time is the math lecture on Monday?" → <final_answer>structured</final_answer>
@@ -83,7 +84,7 @@ Now classify this input:
         if not response:
             response = "Sorry, I couldn't find an answer to your question."
         text_to_speech(response)  # Convert response to speech
-        return response
+        return response 
 
     def call_hybrid_agent(user_input):
         print("\n✅ [HYBRID AGENT]: Handling both story and question...")
