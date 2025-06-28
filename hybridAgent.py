@@ -15,7 +15,8 @@ def hybridclassifier(user_input):
 2. Output a **JSON object** with two keys:
     - "structured": a list of structured questions (only about bus schedules, timetables, cafe menus)
     - "unstructured": a list of unstructured questions (about university policies, modules, procedures, staff, etc.)
-
+3. add markdown formatting to the questions for better readability. But dont tell anything about tags or markdown formatting in the output.
+4 just give the answer no chain of thought or reasoning.
 Example 01:
 
 Input: "tell me the lunch menu today, when is the OOP class, and how can I apply for leave? also tell me is Big O notaion covered in DSA module?"
