@@ -73,7 +73,7 @@ Now classify this input:
         print("\n✅ [structured AGENT]: Answering structured question...")
         res=structuredAgent(user_input)  # Call the structured agent function
         print("\n✅ Structured Agent Response:\n", res)
-        text_to_speech(res)
+        # text_to_speech(res)
         return res  # Convert response to speech
     
 
@@ -83,7 +83,7 @@ Now classify this input:
         print("\n✅ Unstructured Agent Response:\n", response)
         if not response:
             response = "Sorry, I couldn't find an answer to your question."
-        text_to_speech(response)  # Convert response to speech
+        # text_to_speech(response)  # Convert response to speech
         return response 
 
     def call_hybrid_agent(user_input):
@@ -92,7 +92,7 @@ Now classify this input:
         print("\n✅ Hybrid Agent Response:\n", response)
         if not response:
             response = "Sorry, I couldn't find an answer to your question."
-        text_to_speech(response)  # Convert response to speech
+        # text_to_speech(response)  # Convert response to speech
         return response  # Call the hybrid agent function
 
 #---------AGENT CALLING FUNCTIONS--END------------------------------------------     
@@ -116,9 +116,12 @@ Now classify this input:
             print("🔴Unknown classification.")
     else:
         print("\n🔴No <final_answer> tag found in the response.")
+
+    audio_url = text_to_speech(res)    
     return {
     "classification": final_answer,
-    "response": str(res)  # Ensures it's always JSON-serializable
+    "response": str(res),
+    "audio_url": audio_url # Ensures it's always JSON-serializable
     }
 
 #--------- ROUTING TO AGENTS-END----------------------------------------------
