@@ -18,7 +18,7 @@ def hybridclassifier(user_input):
 
 Example 01:
 
-Input: "tell me the lunch menu today, when is the OOP class, and how can I apply for leave?"
+Input: "tell me the lunch menu today, when is the OOP class, and how can I apply for leave? also tell me is Big O notaion covered in DSA module?"
 Output:
 {{
   "structured": [
@@ -26,7 +26,8 @@ Output:
     "When is the OOP class?"
   ],
   "unstructured": [
-    "How can I apply for leave?"
+    "How can I apply for leave?",
+    "Is Big O notation covered in the DSA module?"
   ]
 }}
 
