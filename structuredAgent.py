@@ -58,9 +58,6 @@ User: "What’s on the cafe menu today?"
 
 
 
-
-
-
 User: "when is the bus to kadawatha arriving at the main gate?"
 → <final_answer>SELECT route_name, departure_time, arrival_time FROM bus_schedules WHERE departure_location ='University Main Gate' AND date = CURRENT_DATE() AND arrival_location='Kadawatha' ;
 </final_answer>
@@ -70,8 +67,6 @@ User: "What are the bus schedules for today"
 
 User: "When does the bus leave from campus to Athurugiriya tomorrow?"  
 → <final_answer>SELECT route_name, departure_time, arrival_time FROM bus_schedules WHERE departure_location ='University Main Gate' AND arrival_location LIKE '%Athurugiriya%' AND date = CURRENT_DATE() + INTERVAL 1 DAY;</final_answer>
-
-
 
 
 

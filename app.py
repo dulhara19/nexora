@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from classifier import classify_and_route
 from transformers import MarianMTModel, MarianTokenizer
+from flask import send_from_directory
 
 # Initialize Flask app
 app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -26,6 +27,13 @@ def detect_and_translate(text: str) -> str:
 @app.route("/")
 def home():
     return render_template("index.html")
+
+  # ✅ already in your Flask app
+
+@app.route("/audio/<filename>")
+def serve_audio(filename):
+    return send_from_directory("static/audio", filename)
+
 
 @app.route("/classify", methods=["POST"])
 def classify_endpoint():

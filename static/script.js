@@ -38,6 +38,19 @@ async function sendQuestion() {
       responseText.textContent = "No response found.";
     }
 
+    // ✅ Play audio if available
+   const audioContainer = document.getElementById("audioContainer");
+   audioContainer.innerHTML = "";
+
+   if (data.result?.audio_url) {
+     audioContainer.innerHTML = `
+       <audio controls autoplay>
+         <source src="${data.result.audio_url}" type="audio/wav">
+         Your browser does not support the audio element.
+       </audio>
+     `;
+}
+
   } catch (err) {
     classification.textContent = "Error";
     responseText.textContent = "Something went wrong!";
