@@ -6,6 +6,7 @@ from unstructuredAgent import search_documents
 from tts import text_to_speech
 from stt import speech_to_text
 from hybridAgent import hybridclassifier
+from audiocleanup import strip_markdown
 
 
 def classify_and_route(user_input):
@@ -116,8 +117,8 @@ Now classify this input:
             print("🔴Unknown classification.")
     else:
         print("\n🔴No <final_answer> tag found in the response.")
-
-    audio_url = text_to_speech(res)    
+    
+    audio_url = text_to_speech(strip_markdown(res))    
     return {
     "classification": final_answer,
     "response": str(res),
