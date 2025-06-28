@@ -2,6 +2,9 @@ from flask import Flask, request, jsonify, render_template
 from classifier import classify_and_route
 from transformers import MarianMTModel, MarianTokenizer
 from flask import send_from_directory
+from audiocleanup import cleanup_audio_folder
+
+cleanup_audio_folder()  # Clean up old audio files on startup
 
 # Initialize Flask app
 app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -33,6 +36,7 @@ def home():
 @app.route("/audio/<filename>")
 def serve_audio(filename):
     return send_from_directory("static/audio", filename)
+
 
 
 @app.route("/classify", methods=["POST"])

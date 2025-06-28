@@ -39,16 +39,25 @@ async function sendQuestion() {
     }
 
     // ✅ Play audio if available
-   const audioContainer = document.getElementById("audioContainer");
-   audioContainer.innerHTML = "";
+   // Show speaking animation
+const audioContainer = document.getElementById("audioContainer");
+audioContainer.innerHTML = `
+  <div class="voice-bars">
+    <div class="voice-bar"></div>
+    <div class="voice-bar"></div>
+    <div class="voice-bar"></div>
+  </div>
+`;
 
-   if (data.result?.audio_url) {
-     audioContainer.innerHTML = `
-       <audio controls autoplay>
-         <source src="${data.result.audio_url}" type="audio/wav">
-         Your browser does not support the audio element.
-       </audio>
-     `;
+if (data.result?.audio_url) {
+  const audio = new Audio(data.result.audio_url);
+
+  audio.play().catch(err => console.warn("Audio play failed:", err));
+
+  // Remove animation when audio ends
+  audio.onended = () => {
+    audioContainer.innerHTML = "<p>✅ Done speaking.</p>";
+  };
 }
 
   } catch (err) {
