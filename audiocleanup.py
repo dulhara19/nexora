@@ -10,6 +10,7 @@ def cleanup_audio_folder(folder="static/audio", max_age_seconds=3600):
             os.remove(file)
 
 
+# this function is used to trim markdown from the text response because voice response does not support markdown formatting correctly but when text response is sent to the user it should be formatted correctly 
 
 def strip_markdown(text):
     # Remove bold/italic/code ticks/headers/links etc.
