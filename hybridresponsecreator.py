@@ -21,6 +21,7 @@ def hybridresponsecreator(structured_question,unstructured_question,structured_a
     - Try to add supportive informations and be more helpful in your response.
     - just provide the answer, no need to explain how you got the answer or any reasoning.
     - dont make long answers, just be concise and to the point.
+    - even though structured_answers are "data not found on the database" handle the situation acting as helper to the student, while telling the answer using unstructured_answers
 
     here is the information you have:
     - structured_questions: {structured_question}

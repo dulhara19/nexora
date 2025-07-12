@@ -10,6 +10,7 @@ from audiocleanup import strip_markdown
 
 
 def classify_and_route(user_input):
+    print("✅classifier started working")
 
 # debugging---
 # input=speech_to_text()
@@ -27,6 +28,9 @@ Your task is to output ONLY one of these three categories wrapped inside <final_
 
 Examples:
 - "What time is the math lecture on Monday?" → <final_answer>structured</final_answer>
+- "What are the bus schedules for today?" → <final_answer>structured</final_answer>
+- "when is the bus to kadawatha arriving at the main gate?" → <final_answer>structured</final_answer>
+- "When does the bus leave from campus to Athurugiriya tomorrow?" → <final_answer>structured</final_answer>
 - "When is the bus arriving at the main gate?" → <final_answer>structured</final_answer>
 - "What is today's cafe menu?" → <final_answer>structured</final_answer>
 - "What are the exam dates for this semester?" → <final_answer>structured</final_answer>
