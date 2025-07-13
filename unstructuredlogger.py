@@ -1,14 +1,30 @@
+# unstructuredlogger.py
+
 import json
 from datetime import datetime
 
-def log_result(query, final_answer, expected_answer, used_fallback, success):
+def log_result(
+    query,
+    final_answer,
+    retrieved_context,
+    success,
+    log_file="unstructured_logs.json"
+):
     log_entry = {
         "timestamp": datetime.now().isoformat(),
         "query": query,
+        "retrieved_context": retrieved_context,
         "final_answer": final_answer,
-        "expected_answer": expected_answer,
-        "used_fallback": used_fallback,
         "success": success
     }
-    with open("agent_eval_logs.json", "a", encoding="utf-8") as f:
-        f.write(json.dumps(log_entry) + "\n")
+
+    try:
+        with open(log_file, "r", encoding="utf-8") as f:
+            logs = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        logs = []
+
+    logs.append(log_entry)
+
+    with open(log_file, "w", encoding="utf-8") as f:
+        json.dump(logs, f, indent=4)
