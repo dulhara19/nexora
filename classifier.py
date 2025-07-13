@@ -21,7 +21,7 @@ def classify_and_route(user_input):
 You are a classifier that determines whether a user question for a university chatbot is about "structured" data, "unstructured" information, or a "hybrid" of both.
 
 Your task is to output ONLY one of these three categories wrapped inside <final_answer> tags:
-- structured → questions about timetables, bus schedules, or cafe menus(data stored in structured databases)
+- structured → questions about timetables, bus schedules, or cazfe menus(data stored in structured databases)
 - unstructured → questions about university policies, procedures, modules,subjects,degree or general information(not included :timetables,cafe menus, bus schedules)
 - hybrid → questions containing both structured and unstructured information requests in the same input.
 - If user asks multiple questions just classify as hybrid

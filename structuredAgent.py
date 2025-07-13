@@ -112,75 +112,70 @@ Now generate the SQL query for the following user input:
 "{user_input}"
     """
     print("agent called for structured question")
-    response=connector(prompt)  # Call the connector function with user input
-    
-# Parse and extract classification
+    # Call the LLM connector
+    response = connector(prompt)
     result = response.json()
     raw_output = result.get("response", "")
 
-# Print raw output for debugging
-    # print("\n Raw LLM Output:\n", raw_output)
+    # Initialize defaults
+    final_answer = "Sorry, I couldn't generate a valid SQL query for your question."
+    result_string = "No result"
+    all_rows = []
 
-# Step 5: Extract <final_answer>
+    # Extract <final_answer> SQL query
     match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
-
     if match:
-       query = match.group(1).strip()
-       if not query.endswith(";"):
-          query += ";" 
-       print("\n✅ qery generated:✅Sending to database..")
-       print(query)
-       conn=get_connection()
-       cursor=conn.cursor()
-       cursor.execute(query)
-       all_rows = cursor.fetchall()
-       result_string = str(all_rows)
-       
-        
-       if not all_rows:
-        print("❌ Data NOT found in the database.")
-        fallback_message = "No data found in the database."
-        response = create_response_from_llm(fallback_message, user_input, query, date_time)
-       else:
-        print("\n✅Query Results generated from MYsqlDB:")
-        response=create_response_from_llm(all_rows, user_input,query,date_time)
-       
+        query = match.group(1).strip()
+        if not query.endswith(";"):
+            query += ";"
 
-       # Step 4: Parse and extract classification
-       result = response.json()
-       raw_output = result.get("response", "")
+        print("\n✅ qery generated:✅Sending to database..")
+        print(query)
 
-      # Print raw output for debugging
-      # print("\n📦Raw LLM Output:\n", raw_output)
+        try:
+            conn = get_connection()
+            cursor = conn.cursor()
+            cursor.execute(query)
+            all_rows = cursor.fetchall()
+            result_string = str(all_rows)
 
-      # Step 5: Extract <final_answer>
-       match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
-       if match:
-          final_answer = match.group(1).strip()
-          print("\n✅Final Answer Extracted from Unstructured Agent..")
-        # print(final_answer)
+            if not all_rows:
+                print("❌ Data NOT found in the database.")
+                fallback_message = "No data found in the database."
+                response = create_response_from_llm(fallback_message, user_input, query, date_time)
+            else:
+                print("\n✅Query Results generated from MYsqlDB:")
+                response = create_response_from_llm(all_rows, user_input, query, date_time)
+
+            # Extract final answer again from response
+            result = response.json()
+            raw_output = result.get("response", "")
+            match = re.search(r"<final_answer>\s*(.*?)\s*</final_answer>", raw_output, re.DOTALL | re.IGNORECASE)
+            if match:
+                final_answer = match.group(1).strip()
+                print("\n✅Final Answer Extracted from Unstructured Agent..")
+            else:
+                print("⚠️ Response received but no <final_answer> tag found in LLM output.")
+        except Exception as e:
+            print("❌ Error occurred during SQL execution or response generation:", e)
+            final_answer = "An internal error occurred while processing your request."
     else:
-       print("🔴No <final_answer> tag found in the response.")
-       final_answer = "Sorry, I couldn't generate a valid SQL query for your question."    
-    
-    expected_keywords = ["placeholder"] 
-    
+        print("🔴No <final_answer> tag found in the LLM output.")
 
-
+    # Logging
+    expected_keywords = ["placeholder"]
     log_query_result(
-       user_input,
-       "StructuredAgent",
-       "MySQL",
-       final_answer,
-       result_string,
-       expected_keywords,
-       used_fallback=not bool(all_rows),
-       success=bool(all_rows)
-)
+        user_input,
+        "StructuredAgent",
+        "MySQL",
+        final_answer,
+        result_string,
+        expected_keywords,
+        used_fallback=not bool(all_rows),
+        success=bool(all_rows)
+    )
 
-    
-    return final_answer         
-
+    return final_answer
 
 
 # Assume these values come from your processing pipeline

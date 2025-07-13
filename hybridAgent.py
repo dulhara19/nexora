@@ -9,6 +9,7 @@ from datetime import datetime
 date_time=datetime.now() 
 
 def hybridclassifier(user_input):
+    print("✅ user asked:"+user_input)
     prompt = f"""You are a highly intelligent university chatbot preprocessor. A user may ask story-like hybrid questions that contain multiple sub-questions. Your task is to:
 
 1. Analyze the input and break it down into individual **structured** and **unstructured** questions.
@@ -51,7 +52,7 @@ Output:
 Input: "{user_input}"
 Now return only a valid JSON object with double quotes on keys and values. No explanations, only the JSON.
 """
-
+    
     response = connector(prompt)
     result = response.json()
     raw_output = result.get("response", "")
