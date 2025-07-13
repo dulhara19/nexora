@@ -5,6 +5,7 @@ from langchain_text_splitters import CharacterTextSplitter
 from vectorresponsecreator import create_response_from_semantic_context 
 from datetime import datetime
 import re
+from unstructuredlogger import log_result
 
 date_time=datetime.now() 
 # current_time = datetime.now().time() 
@@ -80,8 +81,13 @@ def search_documents(query, collection_name="unistructured", top_k=3):
         final_answer = match.group(1).strip()
         print("\n✅ Final Answer Extracted:")
         # print(final_answer)
-    return final_answer         
 
+    log_result(
+        query=query,
+        final_answer=final_answer,
+        retrieved_context=formatted_context
+    )    
+    return final_answer         
 
 # upload_documents(["./src/text_files/"]) # ✅ Use relative or full path
 # search_documents("Complexity Analysis (Big-O) covered in the DSA module?")

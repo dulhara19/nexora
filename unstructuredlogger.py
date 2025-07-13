@@ -7,7 +7,6 @@ def log_result(
     query,
     final_answer,
     retrieved_context,
-    success,
     log_file="unstructured_logs.json"
 ):
     log_entry = {
@@ -15,7 +14,7 @@ def log_result(
         "query": query,
         "retrieved_context": retrieved_context,
         "final_answer": final_answer,
-        "success": success
+        
     }
 
     try:
