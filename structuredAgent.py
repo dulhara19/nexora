@@ -59,7 +59,6 @@ User: "What’s on the cafe menu today?"
 → <final_answer>SELECT item_name, item_type, price FROM cafe_menus WHERE date = CURRENT_DATE();</final_answer>
 
 
-
 User: "when is the bus to kadawatha arriving at the main gate?"
 → <final_answer>SELECT route_name, departure_time, arrival_time FROM bus_schedules WHERE departure_location ='University Main Gate' AND date = CURRENT_DATE() AND arrival_location='Kadawatha' ;
 </final_answer>
@@ -179,6 +178,4 @@ Now generate the SQL query for the following user input:
 
 
 # Assume these values come from your processing pipeline
-
-
 # structuredAgent("When is the bus to kadawatha arriving at the main gate?")
