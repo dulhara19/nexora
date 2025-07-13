@@ -258,5 +258,31 @@
     ],
     "used_fallback": false,
     "success": true
+  },
+  {
+    "timestamp": "2025-07-13T04:18:08.749178",
+    "query": "Show me bus schedules to Moratuwa this Sunday.",
+    "agent": "StructuredAgent",
+    "data_source": "MySQL",
+    "final_answer": "Hey there! \ud83d\ude8c Need a ride to Moratuwa this Sunday? You're in luck \u2013 there\u2019s one bus scheduled from the University Main Gate!\n\n\ud83d\ude8c **Departure:** EX2-180/254 at 7:30 AM  \n\ud83d\ude8c **Arrival in Moratuwa:** Noon (12:00 PM)\n\nJust remember to arrive a bit early! \ud83d\ude0a Sunday mornings can get busy, and you don\u2019t want to miss this ride. Have a great day ahead! \u2728",
+    "retrieved_docs": "[('EX2-180/254', datetime.timedelta(seconds=27000), datetime.timedelta(seconds=30000))]",
+    "expected_keywords": [
+      "placeholder"
+    ],
+    "used_fallback": false,
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-13T04:19:20.177572",
+    "query": "Do we have any buses to Kadawatha on Tuesday?",
+    "agent": "StructuredAgent",
+    "data_source": "MySQL",
+    "final_answer": "Hey there! \ud83d\ude8c On Tuesday, we've got two buses to Kadawatha leaving from University Main Gate:  \n- EX2-138/129 departs at 10:00 AM and arrives at 11:30 AM.  \n- EX2-180/160 departs at 11:30 AM and arrives at 12:45 PM.  \n\nDon\u2019t forget to stay safe while waiting for the bus! \ud83d\udee1\ufe0f",
+    "retrieved_docs": "[('EX2-138/129', datetime.timedelta(seconds=36000), datetime.timedelta(seconds=38700)), ('EX2-180/160', datetime.timedelta(seconds=43200), datetime.timedelta(seconds=45900))]",
+    "expected_keywords": [
+      "placeholder"
+    ],
+    "used_fallback": false,
+    "success": true
   }
 ]
