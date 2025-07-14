@@ -453,5 +453,44 @@
     ],
     "used_fallback": false,
     "success": true
+  },
+  {
+    "timestamp": "2025-07-14T10:54:11.553006",
+    "query": "\nWhen does the bus leave from campus to Kadawatha today? ",
+    "agent": "StructuredAgent",
+    "data_source": "MySQL",
+    "final_answer": "Hey there! \ud83d\ude8c Did you check our bus schedule? The next trip to Kadawatha is on **Route EX2-181/265** departing from the University Main Gate at <time>10:57 AM</time> today. Hope that's okay, we've got another one scheduled around lunch time! \ud83d\udcc5 Let me know if you need any other info or help planning your journey \ud83d\udc4d",
+    "retrieved_docs": "[('EX2-181/265', datetime.timedelta(seconds=38700), datetime.timedelta(seconds=41100))]",
+    "expected_keywords": [
+      "placeholder"
+    ],
+    "used_fallback": false,
+    "success": true
+  },
+  {
+    "timestamp": "2025-07-14T11:48:58.111127",
+    "query": "**When does the bus leave from campus to Kadawatha today?**",
+    "agent": "StructuredAgent",
+    "data_source": "MySQL",
+    "final_answer": "Hey there! \ud83d\ude8c I checked the bus schedules for today's departures from Sports Complex to Kadawatha, but unfortunately, no buses are running on that route right now. Maybe try checking another time or see if you can take a different route? Let me know if you need help planning your journey! \ud83d\ude0a",
+    "retrieved_docs": "[]",
+    "expected_keywords": [
+      "placeholder"
+    ],
+    "used_fallback": true,
+    "success": false
+  },
+  {
+    "timestamp": "2025-07-14T11:50:49.554651",
+    "query": "When does the bus leave from campus to Kadawatha today?",
+    "agent": "StructuredAgent",
+    "data_source": "MySQL",
+    "final_answer": "An internal error occurred while processing your request.",
+    "retrieved_docs": "No result",
+    "expected_keywords": [
+      "placeholder"
+    ],
+    "used_fallback": true,
+    "success": false
   }
 ]
